@@ -1,0 +1,43 @@
+import matplotlib.pyplot as plt
+import seaborn as sns
+import pandas as pd
+
+# Example data (replace with your actual data)
+data = pd.DataFrame({
+    'variable1': np.random.normal(loc=0, scale=1, size=1000),
+    'variable2': np.random.normal(loc=5, scale=2, size=1000)
+})
+
+# Plot histograms
+plt.figure(figsize=(10, 6))
+plt.subplot(2, 1, 1)
+sns.histplot(data['variable1'], kde=True)
+plt.title('Histogram of Variable 1')
+
+plt.subplot(2, 1, 2)
+sns.histplot(data['variable2'], kde=True)
+plt.title('Histogram of Variable 2')
+
+plt.tight_layout()
+plt.show()
+
+# Plot boxplots
+plt.figure(figsize=(8, 6))
+sns.boxplot(data=data)
+plt.title('Boxplot of Variables')
+plt.show()
+
+# Scatter plot
+plt.figure(figsize=(8, 6))
+sns.scatterplot(x='variable1', y='variable2', data=data)
+plt.title('Scatter Plot of Variable 1 vs Variable 2')
+plt.show()
+
+# Calculate correlation matrix
+correlation_matrix = data.corr()
+
+# Plot heatmap
+plt.figure(figsize=(8, 6))
+sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', square=True)
+plt.title('Correlation Heatmap')
+plt.show()
